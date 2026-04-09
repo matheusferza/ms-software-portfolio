@@ -153,7 +153,7 @@ sections:
         actions:
           - type: Link
             label: E-mail
-            url: 'mailto:mf38092@gmail.com'
+            url: 'mailto:matheuzfsouza@gmail.com'
     columns: 3
     spacingX: 60
     spacingY: 20
