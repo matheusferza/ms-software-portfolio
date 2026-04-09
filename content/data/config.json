@@ -1,0 +1,118 @@
+{
+    "type": "Config",
+    "favicon": "/images/msfav.svg",
+    "header": {
+        "type": "Header",
+        "headerVariant": "variant-c",
+        "isSticky": true,
+        "title": "Matheus Souza",
+        "isTitleVisible": true,
+        "primaryLinks": [
+            {
+                "type": "Link",
+                "label": "Informações",
+                "url": "/info"
+            },
+            {
+                "type": "Link",
+                "label": "Certificações",
+                "url": "/certificacoes"
+            },
+            {
+                "type": "Link",
+                "label": "Projetos",
+                "url": "/projects"
+            },
+            {
+                "type": "Link",
+                "label": "Blog",
+                "url": "/blog"
+            }
+        ],
+        "socialLinks": [
+            {
+                "type": "Social",
+                "altText": "LinkedIn",
+                "label": "LinkedIn",
+                "url": "https://www.linkedin.com/in/matheus-souza-benini-997326268",
+                "icon": "linkedin"
+            },
+            {
+                "type": "Social",
+                "altText": "Instagram",
+                "label": "Instagram",
+                "url": "https://www.instagram.com/matheusferza.dev?igsh=MTZwMXFxNWhlZXZtMA==",
+                "icon": "instagram"
+            },
+            {
+                "type": "Social",
+                "altText": "GitHub",
+                "label": "GitHub",
+                "url": "https://github.com/MatheSouza",
+                "icon": "github"
+            }
+        ],
+        "styles": {
+            "self": {
+                "width": "full"
+            }
+        }
+    },
+    "footer": {
+        "type": "Footer",
+        "primaryLinks": [
+            {
+                "type": "Link",
+                "label": "Informações",
+                "url": "/info",
+                "altText": ""
+            },
+            {
+                "type": "Link",
+                "label": "Certificações",
+                "url": "/certificacoes",
+                "altText": ""
+            },
+            {
+                "type": "Link",
+                "label": "Projetos",
+                "url": "/projects",
+                "altText": ""
+            },
+            {
+                "type": "Link",
+                "label": "Blog",
+                "url": "/blog",
+                "altText": ""
+            },
+            {
+                "type": "Link",
+                "label": "Contato",
+                "url": "mailto:mf38092@gmail.com",
+                "altText": ""
+            }
+        ],
+        "contacts": {
+            "type": "ContactBlock",
+            "title": "Disponível para novos projetos",
+            "phoneNumber": "📞 +55 41 99637-0717",
+            "phoneAltText": "Número de telefone",
+            "email": "📧 mf38092@gmail.com",
+            "emailAltText": "Endereço de email",
+            "address": "📍 Curitiba - PR",
+            "addressAltText": "Localização"
+        },
+        "copyrightText": "© 2026 Matheus Souza. Software, automação e presença digital.",
+        "styles": {
+            "self": {
+                "width": "narrow",
+                "padding": [
+                    "pt-16",
+                    "pb-16",
+                    "pr-4",
+                    "pl-4"
+                ]
+            }
+        }
+    }
+}
