@@ -125,6 +125,28 @@ function MobileMenu(props) {
         };
     }, [router.events]);
 
+    useEffect(() => {
+        if (!isMenuOpen) {
+            return;
+        }
+
+        const previousBodyOverflow = document.body.style.overflow;
+        document.body.style.overflow = 'hidden';
+
+        const handleKeyDown = (event: KeyboardEvent) => {
+            if (event.key === 'Escape') {
+                setIsMenuOpen(false);
+            }
+        };
+
+        window.addEventListener('keydown', handleKeyDown);
+
+        return () => {
+            document.body.style.overflow = previousBodyOverflow;
+            window.removeEventListener('keydown', handleKeyDown);
+        };
+    }, [isMenuOpen]);
+
     return (
         <div className="ml-auto lg:hidden">
             <button
@@ -135,12 +157,28 @@ function MobileMenu(props) {
                 <MenuIcon className="fill-current w-icon h-icon" />
             </button>
             <div
-                className={classNames(
-                    'mobile-menu-panel fixed inset-0 z-40 overflow-y-auto px-4 py-4',
-                    isMenuOpen ? 'block' : 'hidden'
-                )}
+                className={classNames('mobile-menu-panel fixed inset-0 z-40', {
+                    'pointer-events-none': !isMenuOpen
+                })}
             >
-                <div className="flex flex-col min-h-full">
+                <button
+                    type="button"
+                    aria-label="Close Menu"
+                    className={classNames('mobile-menu-backdrop', {
+                        'opacity-100': isMenuOpen,
+                        'opacity-0': !isMenuOpen
+                    })}
+                    onClick={() => setIsMenuOpen(false)}
+                />
+                <aside
+                    className={classNames('mobile-menu-drawer', {
+                        'translate-x-0': isMenuOpen,
+                        'translate-x-full': !isMenuOpen
+                    })}
+                    role="dialog"
+                    aria-modal="true"
+                    aria-label="Menu principal"
+                >
                     <div className="site-header-bar justify-between">
                         <SiteLogoLink {...logoProps} />
                         <button
@@ -152,20 +190,20 @@ function MobileMenu(props) {
                         </button>
                     </div>
                     {(primaryLinks.length > 0 || socialLinks.length > 0) && (
-                        <div className="flex flex-col items-center justify-center px-4 py-16 space-y-12 grow">
+                        <div className="flex flex-col gap-8 px-3 py-5 grow overflow-y-auto">
                             {primaryLinks.length > 0 && (
-                                <ul className="space-y-6">
+                                <ul className="mobile-menu-links">
                                     <ListOfLinks links={primaryLinks} inMobileMenu={true} />
                                 </ul>
                             )}
                             {socialLinks.length > 0 && (
-                                <ul className="flex flex-wrap justify-center gap-3">
+                                <ul className="mobile-menu-socials">
                                     <ListOfSocialLinks links={socialLinks} inMobileMenu={true} />
                                 </ul>
                             )}
                         </div>
                     )}
-                </div>
+                </aside>
             </div>
         </div>
     );
@@ -187,7 +225,7 @@ function SiteLogoLink({ title, isTitleVisible, logo }) {
 
 function ListOfLinks({ links, inMobileMenu }) {
     return links.map((link, index) => (
-        <li key={index} className={classNames(inMobileMenu ? 'text-center w-full' : 'inline-flex items-stretch')}>
+        <li key={index} className={classNames(inMobileMenu ? 'w-full' : 'inline-flex items-stretch')}>
             <HeaderLink
                 {...link}
                 className={classNames(inMobileMenu ? 'mobile-menu-link' : 'nav-link')}
@@ -202,7 +240,7 @@ function ListOfSocialLinks({ links, inMobileMenu = false }) {
             <Social
                 {...link}
                 className={classNames('social-link-pill text-lg', {
-                    'w-14 h-14': inMobileMenu
+                    'w-12 h-12': inMobileMenu
                 })}
             />
         </li>
