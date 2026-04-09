@@ -1,6 +1,5 @@
 import classNames from 'classnames';
-import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { Link, Social } from '@/components/atoms';
 import ImageBlock from '@/components/molecules/ImageBlock';
@@ -112,74 +111,23 @@ function HeaderVariantC(props) {
 function MobileMenu(props) {
     const { primaryLinks = [], socialLinks = [], ...logoProps } = props;
     const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const router = useRouter();
-
-    useEffect(() => {
-        const handleRouteChange = () => {
-            setIsMenuOpen(false);
-        };
-        router.events.on('routeChangeStart', handleRouteChange);
-
-        return () => {
-            router.events.off('routeChangeStart', handleRouteChange);
-        };
-    }, [router.events]);
-
-    useEffect(() => {
-        if (!isMenuOpen) {
-            return;
-        }
-
-        const previousBodyOverflow = document.body.style.overflow;
-        document.body.style.overflow = 'hidden';
-
-        const handleKeyDown = (event: KeyboardEvent) => {
-            if (event.key === 'Escape') {
-                setIsMenuOpen(false);
-            }
-        };
-
-        window.addEventListener('keydown', handleKeyDown);
-
-        return () => {
-            document.body.style.overflow = previousBodyOverflow;
-            window.removeEventListener('keydown', handleKeyDown);
-        };
-    }, [isMenuOpen]);
 
     return (
-        <div className="ml-auto lg:hidden">
+        <div className="mobile-menu-wrapper ml-auto lg:hidden">
             <button
-                aria-label="Open Menu"
+                aria-label={isMenuOpen ? 'Close Menu' : 'Open Menu'}
                 className="mobile-menu-button focus:outline-hidden"
-                onClick={() => setIsMenuOpen(true)}
+                onClick={() => setIsMenuOpen((value) => !value)}
             >
-                <MenuIcon className="fill-current w-icon h-icon" />
+                {isMenuOpen ? (
+                    <CloseIcon className="fill-current w-icon h-icon" />
+                ) : (
+                    <MenuIcon className="fill-current w-icon h-icon" />
+                )}
             </button>
-            <div
-                className={classNames('mobile-menu-panel fixed inset-0 z-40', {
-                    'pointer-events-none': !isMenuOpen
-                })}
-            >
-                <button
-                    type="button"
-                    aria-label="Close Menu"
-                    className={classNames('mobile-menu-backdrop', {
-                        'opacity-100': isMenuOpen,
-                        'opacity-0': !isMenuOpen
-                    })}
-                    onClick={() => setIsMenuOpen(false)}
-                />
-                <aside
-                    className={classNames('mobile-menu-drawer', {
-                        'translate-x-0': isMenuOpen,
-                        'translate-x-full': !isMenuOpen
-                    })}
-                    role="dialog"
-                    aria-modal="true"
-                    aria-label="Menu principal"
-                >
-                    <div className="site-header-bar justify-between">
+            {isMenuOpen && (
+                <div className="mobile-menu-panel" role="dialog" aria-modal="true" aria-label="Menu principal">
+                    <div className="mobile-menu-header">
                         <SiteLogoLink {...logoProps} />
                         <button
                             aria-label="Close Menu"
@@ -189,22 +137,25 @@ function MobileMenu(props) {
                             <CloseIcon className="fill-current w-icon h-icon" />
                         </button>
                     </div>
-                    {(primaryLinks.length > 0 || socialLinks.length > 0) && (
-                        <div className="flex flex-col gap-8 px-3 py-5 grow overflow-y-auto">
-                            {primaryLinks.length > 0 && (
+                    <div className="mobile-menu-content">
+                        {primaryLinks.length > 0 && (
+                            <nav aria-label="Navegacao mobile">
                                 <ul className="mobile-menu-links">
                                     <ListOfLinks links={primaryLinks} inMobileMenu={true} />
                                 </ul>
-                            )}
-                            {socialLinks.length > 0 && (
+                            </nav>
+                        )}
+                        {socialLinks.length > 0 && (
+                            <div className="mobile-menu-contact-block">
+                                <p className="mobile-menu-section-title">Contato</p>
                                 <ul className="mobile-menu-socials">
                                     <ListOfSocialLinks links={socialLinks} inMobileMenu={true} />
                                 </ul>
-                            )}
-                        </div>
-                    )}
-                </aside>
-            </div>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            )}
         </div>
     );
 }
