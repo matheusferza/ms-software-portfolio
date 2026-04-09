@@ -82,7 +82,7 @@ topSections:
     actions:
       - type: Button
         label: 'Falar sobre um projeto'
-        url: 'https://wa.me/5541996370717'
+        url: 'https://wa.me/5541987940764'
         style: secondary
     colors: colors-f
     backgroundSize: full

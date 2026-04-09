@@ -31,7 +31,7 @@ sections:
         icon: arrowRight
       - type: Button
         label: 'Falar no WhatsApp'
-        url: 'https://wa.me/5541996370717'
+        url: 'https://wa.me/5541987940764'
         style: secondary
     media:
       type: ImageBlock
@@ -205,7 +205,7 @@ sections:
     text: >-
       Se você precisa de um site melhor resolvido, uma automação útil ou apoio técnico com mais clareza, eu posso ajudar.
 
-      WhatsApp: [41 99637-0717](https://wa.me/5541987940764)  
+      WhatsApp: [41 98794-0764](https://wa.me/5541987940764)  
       E-mail: [mf38092@gmail.com](mailto:mf38092@gmail.com)  
       LinkedIn: [matheus-souza-benini](https://www.linkedin.com/in/matheus-souza-benini-997326268)
     form:
