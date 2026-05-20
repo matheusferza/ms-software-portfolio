@@ -15,7 +15,7 @@ sections:
     type: HeroSection
     colors: colors-f
     backgroundSize: full
-    title: 'Formação complementar em tecnologia'
+    title: 'Cursos e certificações'
     subtitle: 'Cursos, imersões e certificações'
     text: >-
       Gosto de manter o repertório técnico sempre em movimento.  
@@ -55,6 +55,58 @@ sections:
         textAlign: left
 
     items:
+      - type: FeaturedItem
+        title: 'Missão Programação com IA do Zero'
+        subtitle: 'DevClub • HTML, CSS, JavaScript e IA'
+        text: 'Certificado de conclusão emitido em maio de 2026, com desenvolvimento de aplicação web usando HTML, CSS, JavaScript e recursos de inteligência artificial.'
+        actions:
+          - type: Link
+            label: 'Ver certificado'
+            url: '/certificados/devclub-programacao-ia-zero.pdf'
+        styles:
+          self:
+            textAlign: left
+            class: 'cert-card'
+
+      - type: FeaturedItem
+        title: 'Full Stack Week - SaaS de Finanças'
+        subtitle: 'Full Stack Club • 14 horas'
+        text: 'Participação em uma imersão full stack para criação de um SaaS de gerenciamento financeiro com insights gerados por IA, do zero ao deploy.'
+        actions:
+          - type: Link
+            label: 'Ver certificado'
+            url: '/certificados/full-stack-saas.jpg'
+        styles:
+          self:
+            textAlign: left
+            class: 'cert-card'
+
+      - type: FeaturedItem
+        title: 'Front-End com IA'
+        subtitle: 'Alura • 1 hora'
+        text: 'Certificado complementar da imersão Front-End com IA, finalizado em abril de 2026, com foco em interfaces e uso prático de IA no desenvolvimento web.'
+        actions:
+          - type: Link
+            label: 'Ver certificado'
+            url: '/certificados/front-end-com-ia.pdf'
+        styles:
+          self:
+            textAlign: left
+            class: 'cert-card'
+
+      - type: FeaturedItem
+        title: 'Certificado DevOps'
+        subtitle: 'DevOps • Formação complementar'
+        text: 'Certificação voltada a práticas de DevOps, reforçando conhecimentos sobre integração entre desenvolvimento, operações, automação e entrega de software.'
+        actions:
+          - type: Link
+            label: 'Ver certificado'
+            url: '/certificados/certificado-devops.pdf'
+        styles:
+          self:
+            textAlign: left
+            class: 'cert-card'
+
       - type: FeaturedItem
         title: 'Imersão Inteligência Artificial 2ª Edição'
         subtitle: 'Alura + Google • 6 horas'
